@@ -8,16 +8,17 @@ Install-Module -Name 'Az' -Repository PSGallery -Force
 Install-Module -Name 'PSRule.Rules.Azure' -Repository PSGallery -Scope CurrentUser
 
 # The file ps-rule.yaml contains the configuration that will be used by PSRule
+# By default, PSRule will automatically look for a default YAML options file in the current working directory.
+# Alternatively, you can specify a specific file path with `-Option'
 
-Set-Location .\infra\
 # report summary of all PsRule.Rules.Azure checks
-Invoke-PSRule -Format File -InputPath '*.tests.bicep' -Outcome Processed -As Summary
+Invoke-PSRule -Format 'File' -InputPath './infra/' -Outcome 'Processed' -As 'Summary' -Option './infra/ps-rule.yaml'
 
 # report detail of all PsRule.Rules.Azure checks
-Invoke-PSRule -Format File -InputPath '*.tests.bicep' -Outcome Fail, Error -As Detail
+Invoke-PSRule -Format 'File' -InputPath './infra/' -Outcome 'Fail, Error' -As 'Detail' -Option './infra/ps-rule.yaml'
 
 # report detail of all PsRule.Rules.Azure checks with formatting
-Assert-PSRule -Format File -InputPath '*.tests.bicep' -Outcome Fail, Error
+Assert-PSRule -Format 'File' -InputPath './infra/' -Outcome 'Fail, Error' -Option './infra/ps-rule.yaml'
 
 # Note: Invoke-PSRule and Assert-PSRule are the same except for the output format
 # * Invoke-PSRule writes results as structured objects

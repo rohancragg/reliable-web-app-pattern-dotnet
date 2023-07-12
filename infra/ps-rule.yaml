@@ -10,7 +10,7 @@ configuration:
   AZURE_BICEP_FILE_EXPANSION: true
 
   # Configures the number of seconds to wait to build Bicep files.
-  AZURE_BICEP_FILE_EXPANSION_TIMEOUT: 10
+  AZURE_BICEP_FILE_EXPANSION_TIMEOUT: 20
 
   # AZURE_BICEP_CHECK_TOOL and AZURE_BICEP_MINIMUM_VERSION are optional, but can be helpful to troubleshoot if an older version of Bicep is installed. They flag what version of Bicep PSRule is using.
   # Enable Bicep CLI checks
